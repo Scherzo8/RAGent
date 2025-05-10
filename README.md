@@ -63,7 +63,7 @@ ragent/
 │   ├── tools.py         # Calculator + dictionary functions
 │   └── llm_wrapper.py   # Dual LLM wrapper: OpenRouter + HuggingFace
 ├── data/                # Input .txt documents
-├── index/               # Auto-generated vector index and chunk store
+├── index/               # Prebuilt vector index and chunk store
 ├── ui/
 │   └── app.py           # Streamlit UI
 ├── .env                 # API keys (not committed)
@@ -73,12 +73,18 @@ ragent/
 └── pyproject.toml
 ```
 
-## Notes
-
-- The `index/` folder is generated and excluded from version control.
-- If using HuggingFace fallback (`flan-t5-base`), responses may be less fluent due to model size limitations.
-- Retrieval and chunk injection remain fully functional regardless of LLM provider.
-
 ## Demo
 
-To be hosted via Streamlit Cloud or any frontend deployment method. Link can be added here after deployment.
+Live App: [https://ragent.streamlit.app](https://ragent.streamlit.app)
+
+The assistant supports three types of queries:
+- Math calculations (e.g., "What is 8 * (4 + 2)?")
+- Dictionary definitions (e.g., "Define entropy")
+- Contextual RAG questions (e.g., "Where is the company headquartered?")
+
+Hosted via Streamlit Cloud. Powered by a hybrid OpenRouter/HuggingFace agent framework.
+
+## Notes
+
+- The `index/` folder is included for deployment and testing. Re-ingestion is optional unless documents are modified.
+- Retrieval and chunk injection remain fully functional regardless of LLM provider.
