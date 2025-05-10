@@ -17,14 +17,22 @@ def define_word(word: str) -> str:
 
     try:
         url = f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}"
-        res = requests.get(url=url)
+
+        res = requests.get(url, timeout=5)
         res.raise_for_status()
         data = res.json()
 
-        definition = data[0]['meanings'][0]['definitions'][0]['definitions']
+        if isinstance(data, list) and data[0].get("meanings"):
+            defs = data[0]["meanings"][0]["definitions"]
+            definition = defs[0]["definition"] if defs else "No definition found."
+            return f"{word.capitalize()}: {definition}"
 
-        return f"{word.capitalize()}: {definition}"
+        return f"No structured definition found for '{word}'."
     
-    except Exception:
+    except requests.exceptions.RequestException as e:
+        print(f"[ERROR] Dictionary API request failed: {e}")
+        return f"Couldn't reach the dictionary service right now."
 
-        return f"Couldn't find the meaning for the word '{word}'."
+    except Exception as e:
+        print(f"Unexpected dictionary error: {e}")
+        return f"Something went wrong while defining '{word}'."
