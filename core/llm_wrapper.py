@@ -25,16 +25,14 @@ elif LLM_PROVIDER == "huggingface":
     )
 
 def construct_prompt(chunks, query):
-
     context = "\n\n".join(chunks)
-
-    return f"""You are a helpful assistant. Use only the following context to answer the user's question clearly and directly. If the answer is not in the context, say you don't know.
+    return f"""Answer the question using only the context below.
 
     Context:
     {context}
 
     Question: {query}
-    Answer:"""
+    Answer:"""  
 
 
 def query_llm(prompt):
@@ -50,8 +48,8 @@ def query_llm(prompt):
 
     elif LLM_PROVIDER == "huggingface":
         response = generator(prompt, max_new_tokens=256)[0]["generated_text"]
-
-        return response[len(prompt):].strip()
+        
+        return response.strip()
 
     else:
 
