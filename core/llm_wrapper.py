@@ -22,14 +22,13 @@ elif LLM_PROVIDER == "huggingface":
         "text2text-generation", 
         model=HF_MODEL,
         tokenizer=HF_MODEL,
-        use_auth_token=os.getenv("HUGGINGFACEHUB_API_TOKEN")
     )
 
 def construct_prompt(chunks, query):
 
     context = "\n\n".join(chunks)
 
-    return f"""Use the following context to answer the user's question as clearly and accurately as possible.
+    return f"""You are a helpful assistant. Use only the following context to answer the user's question clearly and directly. If the answer is not in the context, say you don't know.
 
     Context:
     {context}

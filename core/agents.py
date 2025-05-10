@@ -8,19 +8,18 @@ def route_query(query: str):
     lowered = query.lower()
 
     if any(keyword in lowered for keyword in ["calculate", "solve", "+", "-", "*", "/", "%"]):
-        print("Routing to calculator...")
+        decision = "Tool: calculator"
 
-        return "Tool: calculator", calculate_expression(query)
-    
+        result = calculate_expression(query)
+
     elif any(keyword in lowered for keyword in ["define", "meaning of", "what is", "explain"]):
         last_word = query.split()[-1]
-        print(f"Routing to dictionary (word: {last_word})...")
-
-        return "Tool: dictionary", define_word(last_word)
-    
-    else:
-        print("Routing to RAG + LLM...")
-        chunks = get_relevant_chunks(query)
-        answer = generate_answer(chunks, query)
+        decision = f"Tool: dictionary (word: {last_word})"
+        result = define_word(last_word)
         
-        return "Tool: LLM (RAG)", answer
+    else:
+        decision = "Tool: LLM (RAG)"
+        chunks = get_relevant_chunks(query)
+        result = generate_answer(chunks, query)
+
+    return decision, result
