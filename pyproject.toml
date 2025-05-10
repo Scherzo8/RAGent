@@ -5,7 +5,7 @@ description = ""
 authors = ["Shuvham <shuvham.sg@gmail.com>"]
 readme = "README.md"
 package-mode = false
-requires-python = ">=3.10"
+
 [tool.poetry.dependencies]
 python = ">=3.10"
 faiss-cpu = ">=1.11.0,<2.0.0"
@@ -16,7 +16,6 @@ requests = ">=2.32.3,<3.0.0"
 streamlit = ">=1.45.0,<2.0.0"
 watchdog = ">=6.0.0,<7.0.0"
 transformers = ">=4.51.3,<5.0.0"
-
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
