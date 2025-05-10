@@ -73,7 +73,7 @@ def ingest_pipeline():
     print(f"Read {len(docs)} documents.")
 
     all_chunks = []
-    
+
     for doc in docs:
         all_chunks.extend(chunk_text(doc, CHUNK_SIZE))
 
@@ -84,3 +84,7 @@ def ingest_pipeline():
     save_chunks(all_chunks)
 
     print("Ingestion pipeline completed successfully.")
+
+
+if __name__ == "__main__":
+    ingest_pipeline()

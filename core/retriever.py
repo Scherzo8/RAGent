@@ -13,6 +13,11 @@ MODEL_NAME = "all-MiniLM-L6-v2"
 
 def load_index():
 
+    if not os.path.exists(VECTOR_INDEX_PATH):
+        from core.ingest import run_ingest
+        print("FAISS index not found. Rebuilding index from source files...")
+        run_ingest()
+
     return faiss.read_index(VECTOR_INDEX_PATH)
 
 
