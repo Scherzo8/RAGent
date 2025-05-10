@@ -1,0 +1,3 @@
+RAG stands for Retrieval-Augmented Generation. It is a technique in which a language model is enhanced by retrieving relevant information from an external data source before answering a question. This allows the model to produce more accurate, grounded, and context-aware responses.
+
+RAG pipelines typically use vector databases (like FAISS) to store document embeddings and retrieve the most relevant chunks based on user queries.

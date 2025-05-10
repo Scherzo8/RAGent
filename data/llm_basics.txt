@@ -1,0 +1,3 @@
+Large Language Models (LLMs) are deep learning models trained on vast amounts of text. They are capable of performing a variety of tasks including question answering, summarization, translation, and more.
+
+LLMs generate human-like text based on the input they receive, and when combined with external tools like search or memory, they become even more powerful. They form the backbone of modern AI assistants.
