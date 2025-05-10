@@ -86,5 +86,8 @@ def ingest_pipeline():
     print("Ingestion pipeline completed successfully.")
 
 
-if __name__ == "__main__":
+def run_ingest():
     ingest_pipeline()
+
+if __name__ == "__main__":
+    run_ingest()
