@@ -23,7 +23,7 @@ def load_chunks():
         return pickle.load(f)
     
 
-def get_relavant_chunks(query, top_k = 3):
+def get_relevant_chunks(query, top_k = 3):
 
     print(f"Searching for: {query}")
     model = SentenceTransformer(MODEL_NAME)
